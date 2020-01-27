@@ -1,0 +1,14 @@
+*.pyc
+.cache
+.idea
+dist
+*.log
+env
+slackbot/env
+.tox
+*.un~
+0/
+tests/.cache
+.coverage
+.cache
+.DS_Store
