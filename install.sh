@@ -1,6 +1,7 @@
 #!/bin/bash
-cd matrix
 echo "Installing RGB Matrix and Slackbot and dependencies. This may take some time (10-20 minutes-ish)..."
+git submodule update --init
+cd matrix
 sudo apt-get update && sudo apt-get install python2.7-dev python-pillow -y
 make build-python
 sudo make install-python
