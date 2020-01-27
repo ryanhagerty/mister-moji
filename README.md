@@ -1,22 +1,19 @@
 # Mister Moji
 ## An LED Panel for your Slack emoji reactions.
 
+## Initial setup
+
+### Setting up your Raspberry Pi
+TODO: Write here - how far to go? Don't want readme to be tutorial 
+
+### Install required dependencies
+
+```
+sudo chmod +x install.sh
+sudo ./install.sh
+```
+
 ##  Setup and running the Slack portion
-
-### Set up your Python environment:
-To get started, have [virtualenv](https://virtualenv.pypa.io) and Python 2.7 installed.
-
-Once installed:
-
-`virtualenv env`
-
-Then initialize the virtualenv:
-
-`source env/bin/activate`
-
-
-#### Install the app's dependencies:
-`pip install -r requirements.txt`
 
 ### Create a Slack App
 Create a Slack app on https://api.slack.com/apps/
