@@ -15,17 +15,16 @@ Here's the parts I used to construct this. I'm linking to Adafruit, who runs out
 * [RGB Matrix Bonnet](https://www.adafruit.com/product/3211)
 * [5V 4A Switching Power Supply](https://www.adafruit.com/product/1466)
 * [16GB MicroSD card](https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073K14CVB)
-*
 
 ## Initial Setup
 ### Setting up your Raspberry Pi Zero
-* Flash your MicroSD card with Raspbian Buster Lite(https://www.raspberrypi.org/downloads/raspbian/). This is a minimal CLI only install of Raspbian (performance is critical for this).
+* Flash your MicroSD card with [Raspbian Buster Lite](https://www.raspberrypi.org/downloads/raspbian/). This is a minimal CLI only install of Raspbian (performance is critical for this).
 * Put the card into the Zero and boot up.
 * Set up [WiFi](https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md) and [SSH](https://www.raspberrypi.org/documentation/remote-access/ssh/).
 * Change your Zero's password: `passwd`
 * [Set up a static IP address](https://www.howtogeek.com/184310/ask-htg-should-i-be-setting-static-ip-addresses-on-my-router/) for your Zero on your router.
-* Test you can SSH into your Zero. You can use [PuTTY](https://www.putty.org/) on Windows or the terminal on OSX/Linux.
-* You can now stop using the Zero's power supply, HDMI cable and USB host. We're going to plug it directly into the bonnet, which will power the Zero, and control it entirely through SSH.
+* Confirm that you can SSH into your Zero. You can use [PuTTY](https://www.putty.org/) on Windows or the terminal on OSX/Linux.
+* You can now stop using the Zero's power supply, HDMI cable and USB host. We're going to plug it directly into the bonnet, which will provide power. We will now control it entirely through SSH.
 
 ### Wire your matrix, bonnet and Zero together
 * Solder the GPIO headers into the Zero. If you bought the solderless option, check out the [Adafruit page for a video tutorial](https://www.adafruit.com/product/3413) on how to hammer them in.
@@ -35,7 +34,7 @@ Here's the parts I used to construct this. I'm linking to Adafruit, who runs out
   * Notice the alignment of the matrix in relation to the zero in this photo:
     * Connect the ribbon on the matrix to the bonnet
     * Connect one of the white connectors to the matrix. We don't need to worry about the other.
-    * Connect the pitchfork connects to the bonnet, aligning the colors so they match this photo (red positive/black negative)
+    * Connect the pitchfork connecters to the bonnet, aligning the colors so they match this photo (red positive/black negative). Tighten with a screwdriver so they don't fall out.
 * Plug the Matrix power supply into the bonnet. Yea!
 
 ### Prepare for the Matrix library / install required dependencies
@@ -105,8 +104,8 @@ Get your bot to a public channel, then you or someone else give emoji reactions 
 You can certainly add custom emojis, and it will work. To prevent the app from failing to load a missing image, I print out the emoji name if the image doesn't exist.
 
 * Where did you get your images?
-Oh, thanks for asking:
-* I got the images from [iamcal/emoji-data](https://github.com/iamcal/emoji-data).
-* I created a [batch action](https://design.tutsplus.com/tutorials/how-to-create-a-photoshop-batch-action--cms-32877) to convert all files to `24x24` with a black background. Because there are over 3,000 emojis, this took over 45 minutes :laughing:. Image size and transparency is a huge bottleneck when run in conjunction with the Python Slack Events API.
-* Slack only returns the emoji name instead of a ISO codepoint (like all emoji images everywhere are named). To get around this, I wrote a node script to rename and move all my images based on mapping the ISO name and the `short_name`. If you'd like to use a different set of images: Twitter, Google, etc. I put [that script up for download as well](https://github.com/ryanhagerty/unicode-slack-emoji-conversion).
-* Where are all the skin color emojis? Some system emoji sets don't support this, so it will default to the standard emoji.
+  Oh, thanks for asking:
+  * I got the images from [iamcal/emoji-data](https://github.com/iamcal/emoji-data).
+  * I created a [batch action](https://design.tutsplus.com/tutorials/how-to-create-a-photoshop-batch-action--cms-32877) to convert all files to `24x24` with a black background. Because there are over 3,000 emojis, this took over 45 minutes :laughing:. Image size and transparency is a huge bottleneck when run in conjunction with the Python Slack Events API.
+  * Slack only returns the emoji name instead of an ISO codepoint (like all emoji images everywhere are named). To get around this, I wrote a node script to rename and move all my images based on mapping the ISO name and the `short_name`. If you'd like to use a different set of images: Twitter, Google, etc. I put [that script up for download as well](https://github.com/ryanhagerty/unicode-slack-emoji-conversion).
+  * Where are all the skin color emojis? Some system emoji sets don't support this, so it will default to the standard emoji.
