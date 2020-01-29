@@ -15,4 +15,5 @@ sudo pip install slackclient
 sudo pip install slackeventsapi
 sudo apt-get install libxml2-dev libxslt-dev
 sudo pip install requests
+git config submodule.matrix.ignore all
 echo "Installation complete! 😃"
