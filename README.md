@@ -101,11 +101,17 @@ Get your bot to a public channel, then you or someone else give emoji reactions 
 
 ## Questions/Notes
 * What about custom emojis?
-You can certainly add custom emojis, and it will work. To prevent the app from failing to load a missing image, I print out the emoji name if the image doesn't exist.
+
+    You can certainly add custom emojis, and it will work. To prevent the app from failing to load a missing image, I print out the emoji name if the image doesn't exist.
 
 * Where did you get your images?
+
   Oh, thanks for asking:
   * I got the images from [iamcal/emoji-data](https://github.com/iamcal/emoji-data).
   * I created a [batch action](https://design.tutsplus.com/tutorials/how-to-create-a-photoshop-batch-action--cms-32877) to convert all files to `24x24` with a black background. Because there are over 3,000 emojis, this took over 45 minutes :laughing:. Image size and transparency is a huge bottleneck when run in conjunction with the Python Slack Events API.
   * Slack only returns the emoji name instead of an ISO codepoint (like all emoji images everywhere are named). To get around this, I wrote a node script to rename and move all my images based on mapping the ISO name and the `short_name`. If you'd like to use a different set of images: Twitter, Google, etc. I put [that script up for download as well](https://github.com/ryanhagerty/unicode-slack-emoji-conversion).
   * Where are all the skin color emojis? Some system emoji sets don't support this, so it will default to the standard emoji.
+  
+* Why didn't you do X in Python?
+
+  This is my first Python project, so I have no idea what I'm doing :laughing:
